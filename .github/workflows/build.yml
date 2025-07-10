@@ -16,13 +16,13 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore GHelper/GHelper.csproj
 
-      - name: Build
-        run: dotnet build --configuration Release
+      - name: Build project
+        run: dotnet build GHelper/GHelper.csproj --configuration Release
 
-      - name: Publish
-        run: dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o ./publish
+      - name: Publish project
+        run: dotnet publish GHelper/GHelper.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o ./publish
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
